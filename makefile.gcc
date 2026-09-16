@@ -1,0 +1,45 @@
+# makefile.gcc -- GNU make + GCC + SDL2 build for ZeroPoint (ArcaOS)
+# Usage:  make -f makefile.gcc
+#         make -f makefile.gcc clean
+
+CXX     = g++
+CFLAGS  = -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__
+LDFLAGS = -Zomf -Zhigh-mem -Zmap
+LIBS    = -lSDL2 -lSDL2_ttf
+
+BIN      = bin
+TARGET   = $(BIN)/ZeroPoint.exe
+DEF      = src/zeropt.def
+ICON_RC  = src/resource.rc
+ICON_RES = $(BIN)/resource.res
+
+OBJS    = $(BIN)/main.o \
+          $(BIN)/poly.o \
+          $(BIN)/pwalk.o \
+          $(BIN)/wlnopt.o
+
+.PHONY: all clean
+
+all: $(BIN) $(TARGET)
+
+$(BIN):
+	mkdir -p $(BIN)
+
+$(TARGET): $(OBJS) $(DEF)
+	$(CXX) $(LDFLAGS) -o $@ $(OBJS) $(LIBS) $(DEF)
+	-wrc -r $(ICON_RC) $(ICON_RES) && wrc $(ICON_RES) $@
+
+$(BIN)/main.o: src/main.cpp src/poly.h src/pwalk.h src/wlnopt.h src/wlndefs.h src/genArray.h
+	$(CXX) $(CFLAGS) -c -o $@ src/main.cpp
+
+$(BIN)/poly.o: src/poly.cpp src/poly.h src/genArray.h src/wlndefs.h
+	$(CXX) $(CFLAGS) -c -o $@ src/poly.cpp
+
+$(BIN)/pwalk.o: src/pwalk.cpp src/pwalk.h src/poly.h src/genArray.h
+	$(CXX) $(CFLAGS) -c -o $@ src/pwalk.cpp
+
+$(BIN)/wlnopt.o: src/wlnopt.cpp src/wlnopt.h src/wlndefs.h
+	$(CXX) $(CFLAGS) -c -o $@ src/wlnopt.cpp
+
+clean:
+	rm -f $(BIN)/*.o $(BIN)/*.exe $(BIN)/*.map $(BIN)/*.sym $(BIN)/*.res

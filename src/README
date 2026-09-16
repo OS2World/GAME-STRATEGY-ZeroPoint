@@ -1,0 +1,67 @@
+ZeroPoint version 0.9.4 bug-fix release. There is a short change log at the
+end of this file.
+
+The files included in this distribution are covered by the GNU Public
+License. See the file 'COPYING' for more information.
+
+This is the source for the program Zero Point, a simple but addictive video game 
+which involves slowing and stopping a bouncing line or polygon using the arrow
+keys on the keyboard to change the motion of the line(s). (It is simple in
+concept, but it seems to be quite difficult to actually play.) 
+
+The program is written using the V GUI library written primarily by Bruce
+Wampler. It is available at:
+
+http://www.objectcentral.com/
+
+The program was written primarily under X11 on Linux, and has a Makefile for
+GNU make and the g++ compiler. If the source directory is a child of the V
+directory in which Config.mk resides, the Makefile should work with little
+or no change. For other installations, the Makefile should be edited for local
+directories, etc. before trying to compile the code. 
+
+On windows, I have been using the mingw32 compiler, which is a port to
+windows of the GNU g++ compiler, and is available at:
+
+http://agnes.dida.physik.uni-essen.de/~janjaap/mingw32/
+
+The Makefile provided should work relatively well with the mingw32 compiler,
+if the source directory is in the V home directory, which holds the file
+Config.mk.
+
+For other compilers, the code should all be compiled and then linked to the
+libraries V links to, and the V library itself. That sequence of commands
+shouldn't be too difficult with any compiler. 
+
+Executables for Linux (ZeroPoint) (ELF, glibc6, X11R6) and Windows95 
+(ZeroPoint.exe) are included in the zipped distribution. The executable has a 
+demo dialog that explains the game and shows how to play.
+
+I can be reached at 
+
+enumerate@rocketmail.com
+
+Bugs:
+
+Windows
+1. Exit dialog doesn't work correctly in all circumstances.
+
+ToDo:
+
+1. Saved games are not implemented yet. They can be read from the .rc file,
+   but there's no way to save them, or load them.
+
+Change Log:
+
+0.9.4 2/15/99 Bug fix release. Primarily corrected mistakes in the
+implementation of the Set Options dialog, improving the layout and the
+Windows functionality.
+
+0.9.3 11/12/98 Original public release. Basic functionality intact,
+especially in Linux--some rough spots in Windows. (0.9.3a is a release a day
+later to correct a configuration problem that resulted in the Linux version
+running way too fast)
+
+thanks
+
+have fun

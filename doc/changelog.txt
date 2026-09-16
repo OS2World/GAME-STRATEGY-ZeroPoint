@@ -1,0 +1,58 @@
+ZeroPoint - Changelog
+=====================
+
+Version 0.9.5  (ArcaOS SDL2 Port)
+----------------------------------
+
+Initial SDL2 port from the original V GUI library build.
+Target platform: ArcaOS 5.x / OS/2 with GCC + EMX/KLIBC toolchain.
+
+New / Changed
+  * Replaced V GUI library (wlnapp, wlncmdw, wlncnv) with SDL2 rendering.
+  * All in-game dialogs (pause, quit, game over, level complete, high scores)
+    now use native OS/2 PM message boxes — no TTF font required.
+  * Embedded 8x8 bitmap font (public domain, IBM CP437 glyphs 32-127) for
+    status bar text; renders correctly even when no system font is installed.
+  * Status bar now shows text matching the original Windows version layout:
+      Level: N  Total: N  This level: N  Lives: N  Esc: Quit, P: Pause
+  * Menu bar added (SDL2-drawn): File | Game | Options | Help
+      File   — New Game (Ctrl+N), High Scores (H), Quit (Ctrl+Q)
+      Game   — Pause (P), Restart (R)
+      Options — Keys Reference (F1)
+      Help   — Instructions (F1), About (F2)
+  * Keyboard shortcuts added: Ctrl+N (new game), Ctrl+Q (quit), F1
+    (instructions), F2 (about).
+  * Help > About dialog shows game title, version (0.9.5), and original
+    copyright notice.
+  * Startup instructions popup removed; accessible via Help > Instructions
+    or F1 at any time during play.
+  * Default window resolution doubled from 600x400 to 1200x800.
+    Maximum allowed resolution raised to 1920x1200.
+  * Window is resizable; game area scales to the new dimensions.
+  * Polygon drawing moved into an SDL viewport (MENU_H offset) so the menu
+    bar and status bar are never overwritten by game rendering.
+  * Application icon: ZeroPoint.ico (16/20/32/40/48 px) generated from
+    zeropt.png and bound to the EXE via the OS/2 resource compiler.
+  * Build system: makefile.gcc (GNU make + GCC) + compile.cmd (ArcaOS CMD).
+    Output logs to compile.cmd.log with tee.
+  * Module definition file (zeropt.def) cleaned up: removed unsupported
+    PROTSHELL statement that caused EMXOMFLD/weakld parse errors.
+  * Compiler: EMXOMFLD linker variables set in compile.cmd
+      EMXOMFLD_TYPE=WLINK, EMXOMFLD_LINKER=wl.exe, EMXOMFLD_PRELINK=0
+
+Known Issues / Limitations
+  * TTF font rendering (SDL2_ttf) is compiled in but only used as a fallback
+    for the high-score name-entry overlay. Most systems will not have a
+    supported TTF font at the expected paths; this is non-fatal.
+  * The Options menu currently offers only "Keys Reference"; a full options
+    editor (speed, lives, polygon count) is not yet implemented in the SDL2 port.
+  * Practice mode (gInPractice) is preserved in code but has no menu entry yet.
+
+Original Version History (Enumerate Inc.)
+-----------------------------------------
+
+1.0.0  (1998)
+  * Original release for Linux X11 and Windows, using the V GUI library.
+  * Platforms: Linux/X11 (GCC), Windows (Visual C++ with V GUI).
+  * Features: bouncing polygon game, 18-color rainbow palette, high score
+    table, configurable options, demo mode.

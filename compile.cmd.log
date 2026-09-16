@@ -1,0 +1,809 @@
+=== ZeroPoint SDL2 Build === 
+. 
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/main.o src/main.cpp
+In file included from src/main.cpp:15:
+src/pwalk.h: In member function 'vPoint polyWalk::tellSize()':
+src/pwalk.h:61:37: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::xMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                     ^~~~
+src/pwalk.h:61:43: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::yMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                           ^~~~
+src/main.cpp: In function 'bool zpHighScrQ()':
+src/main.cpp:349:12: warning: 'char* strncpy(char*, const char*, size_t)' output may be truncated copying 24 bytes from a string of length 24 [-Wstringop-truncation]
+  349 |     strncpy(gHighscores[insertAt].name, nameInput, rcnamesz - 1);
+      |     ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/poly.o src/poly.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/pwalk.o src/pwalk.cpp
+In file included from src/pwalk.cpp:30:
+src/pwalk.h: In member function 'vPoint polyWalk::tellSize()':
+src/pwalk.h:61:37: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::xMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                     ^~~~
+src/pwalk.h:61:43: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::yMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                           ^~~~
+src/pwalk.cpp: In constructor 'polyWalk::polyWalk(size_t, size_t, size_t, size_t, vPoint)':
+src/pwalk.cpp:35:13: warning: unused variable 'n' [-Wunused-variable]
+   35 |   size_t i, n;
+      |             ^
+src/pwalk.cpp: In member function 'int polyWalk::step(int)':
+src/pwalk.cpp:123:16: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  123 |       if(tempx >= xMax || tempx <= xMin){
+      |          ~~~~~~^~~~~~~
+src/pwalk.cpp:123:33: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  123 |       if(tempx >= xMax || tempx <= xMin){
+      |                           ~~~~~~^~~~~~~
+src/pwalk.cpp:127:16: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  127 |       if(tempy >= yMax || tempy <= yMin){
+      |          ~~~~~~^~~~~~~
+src/pwalk.cpp:127:33: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  127 |       if(tempy >= yMax || tempy <= yMin){
+      |                           ~~~~~~^~~~~~~
+src/pwalk.cpp:112:13: warning: unused variable 'n' [-Wunused-variable]
+  112 |   size_t i, n;
+      |             ^
+src/pwalk.cpp: In member function 'void polyWalk::setSize(vPoint, vPoint)':
+src/pwalk.cpp:163:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  163 |     if((*tempPoly)[i].x < xMin) (*tempPoly)[i].x = xMin;
+src/pwalk.cpp:164:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  164 |     if((*tempPoly)[i].y < yMin) (*tempPoly)[i].y = yMin;
+src/pwalk.cpp:165:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  165 |     if((*tempPoly)[i].x > xMax) (*tempPoly)[i].x = xMax;
+src/pwalk.cpp:166:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  166 |     if((*tempPoly)[i].y > yMax) (*tempPoly)[i].y = yMax;
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/wlnopt.o src/wlnopt.cpp
+src/wlnopt.cpp:41:29: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   41 | char* wlnOpts::theList[] = {"DefStartLevel", "Speedlim", "MaxDelay",
+      |                             ^~~~~~~~~~~~~~~
+src/wlnopt.cpp:41:46: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   41 | char* wlnOpts::theList[] = {"DefStartLevel", "Speedlim", "MaxDelay",
+      |                                              ^~~~~~~~~~
+src/wlnopt.cpp:41:58: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   41 | char* wlnOpts::theList[] = {"DefStartLevel", "Speedlim", "MaxDelay",
+      |                                                          ^~~~~~~~~~
+src/wlnopt.cpp:42:8: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |        ^~~~~~~~~~
+src/wlnopt.cpp:42:20: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |                    ^~~~~~~~~~
+src/wlnopt.cpp:42:32: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |                                ^~~~~~
+src/wlnopt.cpp:42:40: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |                                        ^~~~~~
+src/wlnopt.cpp:43:8: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   43 |        "StartLives", "NSaved", "NHigh", NULL};
+      |        ^~~~~~~~~~~~
+src/wlnopt.cpp:43:22: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   43 |        "StartLives", "NSaved", "NHigh", NULL};
+      |                      ^~~~~~~~
+src/wlnopt.cpp:43:32: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   43 |        "StartLives", "NSaved", "NHigh", NULL};
+      |                                ^~~~~~~
+g++ -Zomf -Zhigh-mem -Zmap -o bin/ZeroPoint.exe bin/main.o bin/poly.o bin/pwalk.o bin/wlnopt.o -lSDL2 -lSDL2_ttf src/zeropt.def
+weakld: D:/Projects/Games/ZeroPoint/src/zeropt.def - error: Parse error 11 on line 3. (stmt=81)
+weakld: error: Parse error 3 on line 11. (errorcode=81 stmt=1497713481)
+emxomfld: Invalid statement (line 3 of D:/Projects/Games/ZeroPoint/src/zeropt.def)make: *** [makefile.gcc:27: bin/ZeroPoint.exe] Error 1
+. 
+Done. See compile.cmd.log for full output. 
+=== ZeroPoint SDL2 Build === 
+. 
+g++ -Zomf -Zhigh-mem -Zmap -o bin/ZeroPoint.exe bin/main.o bin/poly.o bin/pwalk.o bin/wlnopt.o -lSDL2 -lSDL2_ttf src/zeropt.def
+. 
+Done. See compile.cmd.log for full output. 
+=== ZeroPoint SDL2 Build === 
+. 
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/main.o src/main.cpp
+In file included from src/main.cpp:15:
+src/pwalk.h: In member function 'vPoint polyWalk::tellSize()':
+src/pwalk.h:61:37: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::xMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                     ^~~~
+src/pwalk.h:61:43: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::yMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                           ^~~~
+src/main.cpp: In function 'bool zpHighScrQ()':
+src/main.cpp:360:12: warning: 'char* strncpy(char*, const char*, size_t)' output may be truncated copying 24 bytes from a string of length 24 [-Wstringop-truncation]
+  360 |     strncpy(gHighscores[insertAt].name, nameInput, rcnamesz - 1);
+      |     ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/poly.o src/poly.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/pwalk.o src/pwalk.cpp
+In file included from src/pwalk.cpp:30:
+src/pwalk.h: In member function 'vPoint polyWalk::tellSize()':
+src/pwalk.h:61:37: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::xMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                     ^~~~
+src/pwalk.h:61:43: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::yMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                           ^~~~
+src/pwalk.cpp: In constructor 'polyWalk::polyWalk(size_t, size_t, size_t, size_t, vPoint)':
+src/pwalk.cpp:35:13: warning: unused variable 'n' [-Wunused-variable]
+   35 |   size_t i, n;
+      |             ^
+src/pwalk.cpp: In member function 'int polyWalk::step(int)':
+src/pwalk.cpp:123:16: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  123 |       if(tempx >= xMax || tempx <= xMin){
+      |          ~~~~~~^~~~~~~
+src/pwalk.cpp:123:33: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  123 |       if(tempx >= xMax || tempx <= xMin){
+      |                           ~~~~~~^~~~~~~
+src/pwalk.cpp:127:16: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  127 |       if(tempy >= yMax || tempy <= yMin){
+      |          ~~~~~~^~~~~~~
+src/pwalk.cpp:127:33: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  127 |       if(tempy >= yMax || tempy <= yMin){
+      |                           ~~~~~~^~~~~~~
+src/pwalk.cpp:112:13: warning: unused variable 'n' [-Wunused-variable]
+  112 |   size_t i, n;
+      |             ^
+src/pwalk.cpp: In member function 'void polyWalk::setSize(vPoint, vPoint)':
+src/pwalk.cpp:163:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  163 |     if((*tempPoly)[i].x < xMin) (*tempPoly)[i].x = xMin;
+src/pwalk.cpp:164:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  164 |     if((*tempPoly)[i].y < yMin) (*tempPoly)[i].y = yMin;
+src/pwalk.cpp:165:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  165 |     if((*tempPoly)[i].x > xMax) (*tempPoly)[i].x = xMax;
+src/pwalk.cpp:166:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  166 |     if((*tempPoly)[i].y > yMax) (*tempPoly)[i].y = yMax;
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/wlnopt.o src/wlnopt.cpp
+src/wlnopt.cpp:41:29: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   41 | char* wlnOpts::theList[] = {"DefStartLevel", "Speedlim", "MaxDelay",
+      |                             ^~~~~~~~~~~~~~~
+src/wlnopt.cpp:41:46: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   41 | char* wlnOpts::theList[] = {"DefStartLevel", "Speedlim", "MaxDelay",
+      |                                              ^~~~~~~~~~
+src/wlnopt.cpp:41:58: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   41 | char* wlnOpts::theList[] = {"DefStartLevel", "Speedlim", "MaxDelay",
+      |                                                          ^~~~~~~~~~
+src/wlnopt.cpp:42:8: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |        ^~~~~~~~~~
+src/wlnopt.cpp:42:20: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |                    ^~~~~~~~~~
+src/wlnopt.cpp:42:32: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |                                ^~~~~~
+src/wlnopt.cpp:42:40: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |                                        ^~~~~~
+src/wlnopt.cpp:43:8: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   43 |        "StartLives", "NSaved", "NHigh", NULL};
+      |        ^~~~~~~~~~~~
+src/wlnopt.cpp:43:22: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   43 |        "StartLives", "NSaved", "NHigh", NULL};
+      |                      ^~~~~~~~
+src/wlnopt.cpp:43:32: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   43 |        "StartLives", "NSaved", "NHigh", NULL};
+      |                                ^~~~~~~
+g++ -Zomf -Zhigh-mem -Zmap -o bin/ZeroPoint.exe bin/main.o bin/poly.o bin/pwalk.o bin/wlnopt.o -lSDL2 -lSDL2_ttf src/zeropt.def
+. 
+Done. See compile.cmd.log for full output. 
+=== ZeroPoint SDL2 Build === 
+. 
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/main.o src/main.cpp
+In file included from src/main.cpp:15:
+src/pwalk.h: In member function 'vPoint polyWalk::tellSize()':
+src/pwalk.h:61:37: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::xMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                     ^~~~
+src/pwalk.h:61:43: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::yMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                           ^~~~
+src/main.cpp: In function 'int zpNativeAsk(const char*, const char*)':
+src/main.cpp:94:9: error: 'SDL_MESSAGEBOX_QUESTION' was not declared in this scope; did you mean 'SDL_MESSAGEBOX_ERROR'?
+   94 |         SDL_MESSAGEBOX_QUESTION, gWin, title, msg, 2, buttons, NULL
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+      |         SDL_MESSAGEBOX_ERROR
+src/main.cpp: At global scope:
+src/main.cpp:142:12: warning: 'int zpShowMsg(const char* const*, int, bool, const char*)' defined but not used [-Wunused-function]
+  142 | static int zpShowMsg(const char* const lines[], int nLines, bool yesNo,
+      |            ^~~~~~~~~
+make: *** [makefile.gcc:30: bin/main.o] Error 1
+. 
+Done. See compile.cmd.log for full output. 
+=== ZeroPoint SDL2 Build === 
+. 
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/main.o src/main.cpp
+In file included from src/main.cpp:15:
+src/pwalk.h: In member function 'vPoint polyWalk::tellSize()':
+src/pwalk.h:61:37: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::xMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                     ^~~~
+src/pwalk.h:61:43: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::yMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                           ^~~~
+src/main.cpp: At global scope:
+src/main.cpp:142:12: warning: 'int zpShowMsg(const char* const*, int, bool, const char*)' defined but not used [-Wunused-function]
+  142 | static int zpShowMsg(const char* const lines[], int nLines, bool yesNo,
+      |            ^~~~~~~~~
+src/main.cpp: In function 'bool zpHighScrQ()':
+src/main.cpp:428:12: warning: 'char* strncpy(char*, const char*, size_t)' output may be truncated copying 24 bytes from a string of length 24 [-Wstringop-truncation]
+  428 |     strncpy(gHighscores[insertAt].name, nameInput, rcnamesz - 1);
+      |     ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/poly.o src/poly.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/pwalk.o src/pwalk.cpp
+In file included from src/pwalk.cpp:30:
+src/pwalk.h: In member function 'vPoint polyWalk::tellSize()':
+src/pwalk.h:61:37: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::xMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                     ^~~~
+src/pwalk.h:61:43: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::yMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                           ^~~~
+src/pwalk.cpp: In constructor 'polyWalk::polyWalk(size_t, size_t, size_t, size_t, vPoint)':
+src/pwalk.cpp:35:13: warning: unused variable 'n' [-Wunused-variable]
+   35 |   size_t i, n;
+      |             ^
+src/pwalk.cpp: In member function 'int polyWalk::step(int)':
+src/pwalk.cpp:123:16: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  123 |       if(tempx >= xMax || tempx <= xMin){
+      |          ~~~~~~^~~~~~~
+src/pwalk.cpp:123:33: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  123 |       if(tempx >= xMax || tempx <= xMin){
+      |                           ~~~~~~^~~~~~~
+src/pwalk.cpp:127:16: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  127 |       if(tempy >= yMax || tempy <= yMin){
+      |          ~~~~~~^~~~~~~
+src/pwalk.cpp:127:33: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  127 |       if(tempy >= yMax || tempy <= yMin){
+      |                           ~~~~~~^~~~~~~
+src/pwalk.cpp:112:13: warning: unused variable 'n' [-Wunused-variable]
+  112 |   size_t i, n;
+      |             ^
+src/pwalk.cpp: In member function 'void polyWalk::setSize(vPoint, vPoint)':
+src/pwalk.cpp:163:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  163 |     if((*tempPoly)[i].x < xMin) (*tempPoly)[i].x = xMin;
+src/pwalk.cpp:164:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  164 |     if((*tempPoly)[i].y < yMin) (*tempPoly)[i].y = yMin;
+src/pwalk.cpp:165:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  165 |     if((*tempPoly)[i].x > xMax) (*tempPoly)[i].x = xMax;
+src/pwalk.cpp:166:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  166 |     if((*tempPoly)[i].y > yMax) (*tempPoly)[i].y = yMax;
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/wlnopt.o src/wlnopt.cpp
+src/wlnopt.cpp:41:29: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   41 | char* wlnOpts::theList[] = {"DefStartLevel", "Speedlim", "MaxDelay",
+      |                             ^~~~~~~~~~~~~~~
+src/wlnopt.cpp:41:46: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   41 | char* wlnOpts::theList[] = {"DefStartLevel", "Speedlim", "MaxDelay",
+      |                                              ^~~~~~~~~~
+src/wlnopt.cpp:41:58: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   41 | char* wlnOpts::theList[] = {"DefStartLevel", "Speedlim", "MaxDelay",
+      |                                                          ^~~~~~~~~~
+src/wlnopt.cpp:42:8: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |        ^~~~~~~~~~
+src/wlnopt.cpp:42:20: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |                    ^~~~~~~~~~
+src/wlnopt.cpp:42:32: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |                                ^~~~~~
+src/wlnopt.cpp:42:40: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |                                        ^~~~~~
+src/wlnopt.cpp:43:8: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   43 |        "StartLives", "NSaved", "NHigh", NULL};
+      |        ^~~~~~~~~~~~
+src/wlnopt.cpp:43:22: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   43 |        "StartLives", "NSaved", "NHigh", NULL};
+      |                      ^~~~~~~~
+src/wlnopt.cpp:43:32: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   43 |        "StartLives", "NSaved", "NHigh", NULL};
+      |                                ^~~~~~~
+g++ -Zomf -Zhigh-mem -Zmap -o bin/ZeroPoint.exe bin/main.o bin/poly.o bin/pwalk.o bin/wlnopt.o -lSDL2 -lSDL2_ttf src/zeropt.def
+. 
+Done. See compile.cmd.log for full output. 
+=== ZeroPoint SDL2 Build === 
+. 
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/main.o src/main.cpp
+In file included from src/main.cpp:15:
+src/pwalk.h: In member function 'vPoint polyWalk::tellSize()':
+src/pwalk.h:61:37: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::xMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                     ^~~~
+src/pwalk.h:61:43: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::yMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                           ^~~~
+src/main.cpp: At global scope:
+src/main.cpp:311:12: warning: 'int zpShowMsg(const char* const*, int, bool, const char*)' defined but not used [-Wunused-function]
+  311 | static int zpShowMsg(const char* const lines[], int nLines, bool yesNo,
+      |            ^~~~~~~~~
+src/main.cpp: In function 'bool zpHighScrQ()':
+src/main.cpp:614:12: warning: 'char* strncpy(char*, const char*, size_t)' output may be truncated copying 24 bytes from a string of length 24 [-Wstringop-truncation]
+  614 |     strncpy(gHighscores[insertAt].name, nameInput, rcnamesz - 1);
+      |     ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/poly.o src/poly.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/pwalk.o src/pwalk.cpp
+In file included from src/pwalk.cpp:30:
+src/pwalk.h: In member function 'vPoint polyWalk::tellSize()':
+src/pwalk.h:61:37: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::xMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                     ^~~~
+src/pwalk.h:61:43: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::yMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                           ^~~~
+src/pwalk.cpp: In constructor 'polyWalk::polyWalk(size_t, size_t, size_t, size_t, vPoint)':
+src/pwalk.cpp:35:13: warning: unused variable 'n' [-Wunused-variable]
+   35 |   size_t i, n;
+      |             ^
+src/pwalk.cpp: In member function 'int polyWalk::step(int)':
+src/pwalk.cpp:123:16: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  123 |       if(tempx >= xMax || tempx <= xMin){
+      |          ~~~~~~^~~~~~~
+src/pwalk.cpp:123:33: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  123 |       if(tempx >= xMax || tempx <= xMin){
+      |                           ~~~~~~^~~~~~~
+src/pwalk.cpp:127:16: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  127 |       if(tempy >= yMax || tempy <= yMin){
+      |          ~~~~~~^~~~~~~
+src/pwalk.cpp:127:33: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  127 |       if(tempy >= yMax || tempy <= yMin){
+      |                           ~~~~~~^~~~~~~
+src/pwalk.cpp:112:13: warning: unused variable 'n' [-Wunused-variable]
+  112 |   size_t i, n;
+      |             ^
+src/pwalk.cpp: In member function 'void polyWalk::setSize(vPoint, vPoint)':
+src/pwalk.cpp:163:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  163 |     if((*tempPoly)[i].x < xMin) (*tempPoly)[i].x = xMin;
+src/pwalk.cpp:164:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  164 |     if((*tempPoly)[i].y < yMin) (*tempPoly)[i].y = yMin;
+src/pwalk.cpp:165:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  165 |     if((*tempPoly)[i].x > xMax) (*tempPoly)[i].x = xMax;
+src/pwalk.cpp:166:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  166 |     if((*tempPoly)[i].y > yMax) (*tempPoly)[i].y = yMax;
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/wlnopt.o src/wlnopt.cpp
+src/wlnopt.cpp:41:29: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   41 | char* wlnOpts::theList[] = {"DefStartLevel", "Speedlim", "MaxDelay",
+      |                             ^~~~~~~~~~~~~~~
+src/wlnopt.cpp:41:46: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   41 | char* wlnOpts::theList[] = {"DefStartLevel", "Speedlim", "MaxDelay",
+      |                                              ^~~~~~~~~~
+src/wlnopt.cpp:41:58: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   41 | char* wlnOpts::theList[] = {"DefStartLevel", "Speedlim", "MaxDelay",
+      |                                                          ^~~~~~~~~~
+src/wlnopt.cpp:42:8: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |        ^~~~~~~~~~
+src/wlnopt.cpp:42:20: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |                    ^~~~~~~~~~
+src/wlnopt.cpp:42:32: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |                                ^~~~~~
+src/wlnopt.cpp:42:40: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |                                        ^~~~~~
+src/wlnopt.cpp:43:8: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   43 |        "StartLives", "NSaved", "NHigh", NULL};
+      |        ^~~~~~~~~~~~
+src/wlnopt.cpp:43:22: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   43 |        "StartLives", "NSaved", "NHigh", NULL};
+      |                      ^~~~~~~~
+src/wlnopt.cpp:43:32: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   43 |        "StartLives", "NSaved", "NHigh", NULL};
+      |                                ^~~~~~~
+g++ -Zomf -Zhigh-mem -Zmap -o bin/ZeroPoint.exe bin/main.o bin/poly.o bin/pwalk.o bin/wlnopt.o -lSDL2 -lSDL2_ttf src/zeropt.def
+. 
+Done. See compile.cmd.log for full output. 
+=== ZeroPoint SDL2 Build === 
+. 
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/main.o src/main.cpp
+In file included from src/main.cpp:15:
+src/pwalk.h: In member function 'vPoint polyWalk::tellSize()':
+src/pwalk.h:61:37: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::xMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                     ^~~~
+src/pwalk.h:61:43: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::yMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                           ^~~~
+src/main.cpp: At global scope:
+src/main.cpp:316:12: warning: 'int zpShowMsg(const char* const*, int, bool, const char*)' defined but not used [-Wunused-function]
+  316 | static int zpShowMsg(const char* const lines[], int nLines, bool yesNo,
+      |            ^~~~~~~~~
+src/main.cpp: In function 'bool zpHighScrQ()':
+src/main.cpp:624:12: warning: 'char* strncpy(char*, const char*, size_t)' output may be truncated copying 24 bytes from a string of length 24 [-Wstringop-truncation]
+  624 |     strncpy(gHighscores[insertAt].name, nameInput, rcnamesz - 1);
+      |     ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/poly.o src/poly.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/pwalk.o src/pwalk.cpp
+In file included from src/pwalk.cpp:30:
+src/pwalk.h: In member function 'vPoint polyWalk::tellSize()':
+src/pwalk.h:61:37: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::xMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                     ^~~~
+src/pwalk.h:61:43: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::yMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                           ^~~~
+src/pwalk.cpp: In constructor 'polyWalk::polyWalk(size_t, size_t, size_t, size_t, vPoint)':
+src/pwalk.cpp:35:13: warning: unused variable 'n' [-Wunused-variable]
+   35 |   size_t i, n;
+      |             ^
+src/pwalk.cpp: In member function 'int polyWalk::step(int)':
+src/pwalk.cpp:123:16: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  123 |       if(tempx >= xMax || tempx <= xMin){
+      |          ~~~~~~^~~~~~~
+src/pwalk.cpp:123:33: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  123 |       if(tempx >= xMax || tempx <= xMin){
+      |                           ~~~~~~^~~~~~~
+src/pwalk.cpp:127:16: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  127 |       if(tempy >= yMax || tempy <= yMin){
+      |          ~~~~~~^~~~~~~
+src/pwalk.cpp:127:33: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  127 |       if(tempy >= yMax || tempy <= yMin){
+      |                           ~~~~~~^~~~~~~
+src/pwalk.cpp:112:13: warning: unused variable 'n' [-Wunused-variable]
+  112 |   size_t i, n;
+      |             ^
+src/pwalk.cpp: In member function 'void polyWalk::setSize(vPoint, vPoint)':
+src/pwalk.cpp:163:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  163 |     if((*tempPoly)[i].x < xMin) (*tempPoly)[i].x = xMin;
+src/pwalk.cpp:164:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  164 |     if((*tempPoly)[i].y < yMin) (*tempPoly)[i].y = yMin;
+src/pwalk.cpp:165:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  165 |     if((*tempPoly)[i].x > xMax) (*tempPoly)[i].x = xMax;
+src/pwalk.cpp:166:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  166 |     if((*tempPoly)[i].y > yMax) (*tempPoly)[i].y = yMax;
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/wlnopt.o src/wlnopt.cpp
+src/wlnopt.cpp:41:29: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   41 | char* wlnOpts::theList[] = {"DefStartLevel", "Speedlim", "MaxDelay",
+      |                             ^~~~~~~~~~~~~~~
+src/wlnopt.cpp:41:46: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   41 | char* wlnOpts::theList[] = {"DefStartLevel", "Speedlim", "MaxDelay",
+      |                                              ^~~~~~~~~~
+src/wlnopt.cpp:41:58: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   41 | char* wlnOpts::theList[] = {"DefStartLevel", "Speedlim", "MaxDelay",
+      |                                                          ^~~~~~~~~~
+src/wlnopt.cpp:42:8: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |        ^~~~~~~~~~
+src/wlnopt.cpp:42:20: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |                    ^~~~~~~~~~
+src/wlnopt.cpp:42:32: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |                                ^~~~~~
+src/wlnopt.cpp:42:40: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |                                        ^~~~~~
+src/wlnopt.cpp:43:8: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   43 |        "StartLives", "NSaved", "NHigh", NULL};
+      |        ^~~~~~~~~~~~
+src/wlnopt.cpp:43:22: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   43 |        "StartLives", "NSaved", "NHigh", NULL};
+      |                      ^~~~~~~~
+src/wlnopt.cpp:43:32: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   43 |        "StartLives", "NSaved", "NHigh", NULL};
+      |                                ^~~~~~~
+g++ -Zomf -Zhigh-mem -Zmap -o bin/ZeroPoint.exe bin/main.o bin/poly.o bin/pwalk.o bin/wlnopt.o -lSDL2 -lSDL2_ttf src/zeropt.def
+. 
+Done. See compile.cmd.log for full output. 
+=== ZeroPoint SDL2 Build === 
+. 
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/main.o src/main.cpp
+In file included from src/main.cpp:15:
+src/pwalk.h: In member function 'vPoint polyWalk::tellSize()':
+src/pwalk.h:61:37: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::xMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                     ^~~~
+src/pwalk.h:61:43: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::yMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                           ^~~~
+src/main.cpp: At global scope:
+src/main.cpp:316:12: warning: 'int zpShowMsg(const char* const*, int, bool, const char*)' defined but not used [-Wunused-function]
+  316 | static int zpShowMsg(const char* const lines[], int nLines, bool yesNo,
+      |            ^~~~~~~~~
+src/main.cpp: In function 'bool zpHighScrQ()':
+src/main.cpp:624:12: warning: 'char* strncpy(char*, const char*, size_t)' output may be truncated copying 24 bytes from a string of length 24 [-Wstringop-truncation]
+  624 |     strncpy(gHighscores[insertAt].name, nameInput, rcnamesz - 1);
+      |     ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/poly.o src/poly.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/pwalk.o src/pwalk.cpp
+In file included from src/pwalk.cpp:30:
+src/pwalk.h: In member function 'vPoint polyWalk::tellSize()':
+src/pwalk.h:61:37: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::xMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                     ^~~~
+src/pwalk.h:61:43: warning: narrowing conversion of '((polyWalk*)this)->polyWalk::yMax' from 'size_t' {aka 'unsigned int'} to 'int' [-Wnarrowing]
+   61 |  vPoint tellSize() {vPoint aSize = {xMax, yMax}; return aSize;}
+      |                                           ^~~~
+src/pwalk.cpp: In constructor 'polyWalk::polyWalk(size_t, size_t, size_t, size_t, vPoint)':
+src/pwalk.cpp:35:13: warning: unused variable 'n' [-Wunused-variable]
+   35 |   size_t i, n;
+      |             ^
+src/pwalk.cpp: In member function 'int polyWalk::step(int)':
+src/pwalk.cpp:123:16: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  123 |       if(tempx >= xMax || tempx <= xMin){
+      |          ~~~~~~^~~~~~~
+src/pwalk.cpp:123:33: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  123 |       if(tempx >= xMax || tempx <= xMin){
+      |                           ~~~~~~^~~~~~~
+src/pwalk.cpp:127:16: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  127 |       if(tempy >= yMax || tempy <= yMin){
+      |          ~~~~~~^~~~~~~
+src/pwalk.cpp:127:33: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  127 |       if(tempy >= yMax || tempy <= yMin){
+      |                           ~~~~~~^~~~~~~
+src/pwalk.cpp:112:13: warning: unused variable 'n' [-Wunused-variable]
+  112 |   size_t i, n;
+      |             ^
+src/pwalk.cpp: In member function 'void polyWalk::setSize(vPoint, vPoint)':
+src/pwalk.cpp:163:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  163 |     if((*tempPoly)[i].x < xMin) (*tempPoly)[i].x = xMin;
+src/pwalk.cpp:164:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  164 |     if((*tempPoly)[i].y < yMin) (*tempPoly)[i].y = yMin;
+src/pwalk.cpp:165:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  165 |     if((*tempPoly)[i].x > xMax) (*tempPoly)[i].x = xMax;
+src/pwalk.cpp:166:25: warning: comparison of integer expressions of different signedness: 'int' and 'size_t' {aka 'unsigned int'} [-Wsign-compare]
+  166 |     if((*tempPoly)[i].y > yMax) (*tempPoly)[i].y = yMax;
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/wlnopt.o src/wlnopt.cpp
+src/wlnopt.cpp:41:29: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   41 | char* wlnOpts::theList[] = {"DefStartLevel", "Speedlim", "MaxDelay",
+      |                             ^~~~~~~~~~~~~~~
+src/wlnopt.cpp:41:46: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   41 | char* wlnOpts::theList[] = {"DefStartLevel", "Speedlim", "MaxDelay",
+      |                                              ^~~~~~~~~~
+src/wlnopt.cpp:41:58: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   41 | char* wlnOpts::theList[] = {"DefStartLevel", "Speedlim", "MaxDelay",
+      |                                                          ^~~~~~~~~~
+src/wlnopt.cpp:42:8: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |        ^~~~~~~~~~
+src/wlnopt.cpp:42:20: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |                    ^~~~~~~~~~
+src/wlnopt.cpp:42:32: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |                                ^~~~~~
+src/wlnopt.cpp:42:40: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 |        "NPollies", "StepPClr", "MaxX", "MaxY",
+      |                                        ^~~~~~
+src/wlnopt.cpp:43:8: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   43 |        "StartLives", "NSaved", "NHigh", NULL};
+      |        ^~~~~~~~~~~~
+src/wlnopt.cpp:43:22: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   43 |        "StartLives", "NSaved", "NHigh", NULL};
+      |                      ^~~~~~~~
+src/wlnopt.cpp:43:32: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   43 |        "StartLives", "NSaved", "NHigh", NULL};
+      |                                ^~~~~~~
+g++ -Zomf -Zhigh-mem -Zmap -o bin/ZeroPoint.exe bin/main.o bin/poly.o bin/pwalk.o bin/wlnopt.o -lSDL2 -lSDL2_ttf src/zeropt.def
+rc -r src/resource.rc bin/resource.res && rc bin/resource.res bin/ZeroPoint.exe
+Compile ending.
+IBM RC (Resource Compiler) Version 5.00.007 Jan 30 2003
+Copyright (C) IBM Corp. 2003.
+- Licensed Materials - Program Property of IBM - All Rights Reserved.
+US Government Users Restricted Rights - Use, duplication or disclosure 
+restricted by GSA ADP Schedule Contract with IBM Corp. 
+
+
+RC :(src/resource.rc:1:8):Error 1002:RC could not find file "ZeroPoint.ico".
+
+make: [makefile.gcc:30: bin/ZeroPoint.exe] Error 1 (ignored)
+. 
+Done. See compile.cmd.log for full output. 
+=== ZeroPoint SDL2 Build === 
+. 
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/main.o src/main.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/poly.o src/poly.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/pwalk.o src/pwalk.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/wlnopt.o src/wlnopt.cpp
+g++ -Zomf -Zhigh-mem -Zmap -o bin/ZeroPoint.exe bin/main.o bin/poly.o bin/pwalk.o bin/wlnopt.o -lSDL2 -lSDL2_ttf src/zeropt.def
+rc -r src/resource.rc bin/resource.res && rc bin/resource.res bin/ZeroPoint.exe
+IBM RC (Resource Compiler) Version 5.00.007 Jan 30 2003
+Copyright (C) IBM Corp. 2003.
+- Licensed Materials - Program Property of IBM - All Rights Reserved.
+US Government Users Restricted Rights - Use, duplication or disclosure 
+restricted by GSA ADP Schedule Contract with IBM Corp. 
+
+
+RC is creating binary resource file bin/resource.res
+
+
+IBM RC (Resource Compiler) Version 5.00.007 Jan 30 2003
+Copyright (C) IBM Corp. 2003.
+- Licensed Materials - Program Property of IBM - All Rights Reserved.
+US Government Users Restricted Rights - Use, duplication or disclosure 
+restricted by GSA ADP Schedule Contract with IBM Corp. 
+
+
+RC is reading the binary resource file bin/resource.res.
+
+
+Writing resources to OS/2 v2.0 Linear .EXE file
+RC is writing 1 DEMAND resource object.
+RC is writing 520 bytes in 1 page.
+     POINTER     1 (517 bytes)
+Writing Extended Attributes:  
+Default Icon
+RC :Error 2021:RC cannot write extended attributes for .
+.
+. 
+Done. See compile.cmd.log for full output. 
+=== ZeroPoint SDL2 Build === 
+. 
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/main.o src/main.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/poly.o src/poly.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/pwalk.o src/pwalk.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/wlnopt.o src/wlnopt.cpp
+g++ -Zomf -Zhigh-mem -Zmap -o bin/ZeroPoint.exe bin/main.o bin/poly.o bin/pwalk.o bin/wlnopt.o -lSDL2 -lSDL2_ttf src/zeropt.def
+rc -r src/resource.rc bin/resource.res && rc bin/resource.res bin/ZeroPoint.exe
+IBM RC (Resource Compiler) Version 5.00.007 Jan 30 2003
+Copyright (C) IBM Corp. 2003.
+- Licensed Materials - Program Property of IBM - All Rights Reserved.
+US Government Users Restricted Rights - Use, duplication or disclosure 
+restricted by GSA ADP Schedule Contract with IBM Corp. 
+
+
+RC is creating binary resource file bin/resource.res
+
+
+IBM RC (Resource Compiler) Version 5.00.007 Jan 30 2003
+Copyright (C) IBM Corp. 2003.
+- Licensed Materials - Program Property of IBM - All Rights Reserved.
+US Government Users Restricted Rights - Use, duplication or disclosure 
+restricted by GSA ADP Schedule Contract with IBM Corp. 
+
+
+RC is reading the binary resource file bin/resource.res.
+
+
+Writing resources to OS/2 v2.0 Linear .EXE file
+RC is writing 1 DEMAND resource object.
+RC is writing 520 bytes in 1 page.
+     POINTER     1 (517 bytes)
+Writing Extended Attributes:  
+Default Icon
+RC :Error 2021:RC cannot write extended attributes for .
+.
+. 
+Done. See compile.cmd.log for full output. 
+=== ZeroPoint SDL2 Build === 
+. 
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/main.o src/main.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/poly.o src/poly.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/pwalk.o src/pwalk.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/wlnopt.o src/wlnopt.cpp
+g++ -Zomf -Zhigh-mem -Zmap -o bin/ZeroPoint.exe bin/main.o bin/poly.o bin/pwalk.o bin/wlnopt.o -lSDL2 -lSDL2_ttf src/zeropt.def
+rc -r src/resource.rc bin/resource.res && rc bin/resource.res bin/ZeroPoint.exe
+IBM RC (Resource Compiler) Version 5.00.007 Jan 30 2003
+Copyright (C) IBM Corp. 2003.
+- Licensed Materials - Program Property of IBM - All Rights Reserved.
+US Government Users Restricted Rights - Use, duplication or disclosure 
+restricted by GSA ADP Schedule Contract with IBM Corp. 
+
+
+RC is creating binary resource file bin/resource.res
+
+
+IBM RC (Resource Compiler) Version 5.00.007 Jan 30 2003
+Copyright (C) IBM Corp. 2003.
+- Licensed Materials - Program Property of IBM - All Rights Reserved.
+US Government Users Restricted Rights - Use, duplication or disclosure 
+restricted by GSA ADP Schedule Contract with IBM Corp. 
+
+
+RC is reading the binary resource file bin/resource.res.
+
+
+Writing resources to OS/2 v2.0 Linear .EXE file
+RC is writing 1 DEMAND resource object.
+RC is writing 520 bytes in 1 page.
+     POINTER     1 (517 bytes)
+Writing Extended Attributes:  
+Default Icon
+RC :Error 2021:RC cannot write extended attributes for .
+.
+. 
+Done. See compile.cmd.log for full output. 
+=== ZeroPoint SDL2 Build === 
+. 
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/main.o src/main.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/poly.o src/poly.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/pwalk.o src/pwalk.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/wlnopt.o src/wlnopt.cpp
+g++ -Zomf -Zhigh-mem -Zmap -o bin/ZeroPoint.exe bin/main.o bin/poly.o bin/pwalk.o bin/wlnopt.o -lSDL2 -lSDL2_ttf src/zeropt.def
+rc -r src/resource.rc bin/resource.res && rc bin/resource.res bin/ZeroPoint.exe
+IBM RC (Resource Compiler) Version 5.00.007 Jan 30 2003
+Copyright (C) IBM Corp. 2003.
+- Licensed Materials - Program Property of IBM - All Rights Reserved.
+US Government Users Restricted Rights - Use, duplication or disclosure 
+restricted by GSA ADP Schedule Contract with IBM Corp. 
+
+
+RC is creating binary resource file bin/resource.res
+
+
+IBM RC (Resource Compiler) Version 5.00.007 Jan 30 2003
+Copyright (C) IBM Corp. 2003.
+- Licensed Materials - Program Property of IBM - All Rights Reserved.
+US Government Users Restricted Rights - Use, duplication or disclosure 
+restricted by GSA ADP Schedule Contract with IBM Corp. 
+
+
+RC is reading the binary resource file bin/resource.res.
+
+
+Writing resources to OS/2 v2.0 Linear .EXE file
+RC is writing 1 DEMAND resource object.
+RC is writing 520 bytes in 1 page.
+     POINTER     1 (517 bytes)
+Writing Extended Attributes:  
+Default Icon
+RC :Error 2021:RC cannot write extended attributes for .
+.
+. 
+Done. See compile.cmd.log for full output. 
+=== ZeroPoint SDL2 Build === 
+. 
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/main.o src/main.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/poly.o src/poly.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/pwalk.o src/pwalk.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/wlnopt.o src/wlnopt.cpp
+g++ -Zomf -Zhigh-mem -Zmap -o bin/ZeroPoint.exe bin/main.o bin/poly.o bin/pwalk.o bin/wlnopt.o -lSDL2 -lSDL2_ttf src/zeropt.def
+rc -r src/resource.rc bin/resource.res && rc bin/resource.res bin/ZeroPoint.exe
+IBM RC (Resource Compiler) Version 5.00.007 Jan 30 2003
+Copyright (C) IBM Corp. 2003.
+- Licensed Materials - Program Property of IBM - All Rights Reserved.
+US Government Users Restricted Rights - Use, duplication or disclosure 
+restricted by GSA ADP Schedule Contract with IBM Corp. 
+
+
+RC is creating binary resource file bin/resource.res
+
+
+IBM RC (Resource Compiler) Version 5.00.007 Jan 30 2003
+Copyright (C) IBM Corp. 2003.
+- Licensed Materials - Program Property of IBM - All Rights Reserved.
+US Government Users Restricted Rights - Use, duplication or disclosure 
+restricted by GSA ADP Schedule Contract with IBM Corp. 
+
+
+RC is reading the binary resource file bin/resource.res.
+
+
+Writing resources to OS/2 v2.0 Linear .EXE file
+RC is writing 1 DEMAND resource object.
+RC is writing 520 bytes in 1 page.
+     POINTER     1 (517 bytes)
+Writing Extended Attributes:  
+Default Icon
+RC :Error 2021:RC cannot write extended attributes for .
+.
+. 
+Done. See compile.cmd.log for full output. 
+=== ZeroPoint SDL2 Build === 
+. 
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/main.o src/main.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/poly.o src/poly.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/pwalk.o src/pwalk.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/wlnopt.o src/wlnopt.cpp
+g++ -Zomf -Zhigh-mem -Zmap -o bin/ZeroPoint.exe bin/main.o bin/poly.o bin/pwalk.o bin/wlnopt.o -lSDL2 -lSDL2_ttf src/zeropt.def
+wrc -r src/resource.rc bin/resource.res && wrc bin/resource.res bin/ZeroPoint.exe
+Open Watcom Windows and OS/2 Resource Compiler Version 2.0.1
+Portions Copyright (c) 1993-2002 Sybase, Inc. All Rights Reserved.
+Source code is available under the Sybase Open Watcom Public License.
+See http://www.openwatcom.org/ for details.
+Error! E060: Can't find file "bin/resource.res".
+make: [makefile.gcc:30: bin/ZeroPoint.exe] Error 9 (ignored)
+. 
+Done. See compile.cmd.log for full output. 
+=== ZeroPoint SDL2 Build === 
+. 
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/main.o src/main.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/poly.o src/poly.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/pwalk.o src/pwalk.cpp
+g++ -O2 -Wall -Isrc -I/@unixroot/usr/include/SDL2 -D__OS2__ -c -o bin/wlnopt.o src/wlnopt.cpp
+g++ -Zomf -Zhigh-mem -Zmap -o bin/ZeroPoint.exe bin/main.o bin/poly.o bin/pwalk.o bin/wlnopt.o -lSDL2 -lSDL2_ttf src/zeropt.def
+wrc -r src/resource.rc bin/resource.res && wrc bin/resource.res bin/ZeroPoint.exe
+Open Watcom Windows and OS/2 Resource Compiler Version 2.0.1
+Portions Copyright (c) 1993-2002 Sybase, Inc. All Rights Reserved.
+Source code is available under the Sybase Open Watcom Public License.
+See http://www.openwatcom.org/ for details.
+Error! E060: Can't find file "bin/resource.res".
+make: [makefile.gcc:30: bin/ZeroPoint.exe] Error 9 (ignored)
+. 
+Done. See compile.cmd.log for full output. 

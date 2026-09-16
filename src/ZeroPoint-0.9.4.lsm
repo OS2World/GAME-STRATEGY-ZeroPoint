@@ -1,0 +1,25 @@
+Begin3
+Title:		Zero Point          
+Version:        0.9.4
+Entered-date:   11/12/98
+Description:    A video game that's simple but challenging. The game presents 
+		the player with a walking line like those in screensavers. The
+		object of the game is to use the arrow keys to affect the 
+		motion of the line. When the player stops the line, he/she 
+		moves to the next level, with either a faster line, or a 
+		moving polygon, depending on the level. The program was 
+		written with the VGUI, so it can be compiled on either 
+		Linux/X11 or Windows95.
+Keywords:       Walking-line ZeroPoint video game Linux/X11 Windows95 VGUI
+Author:         enumerate@rocketmail.com (Tim Farnum)
+Maintained-by:  enumerate@rocketmail.com (Tim Farnum)
+Primary-site:   sunsite.unc.edu /pub/Linux/X11/games
+		282KB  ZeroPoint-0.9.4.tgz
+		1KB    ZeroPoint-0.9.4.lsm
+Alternate-site: 
+Original-site:  
+Platforms:      Linux/X11 (included executable compiled on ELF with glibc6)
+		VGUI needed for compiling  
+		Windows95 executable included in archive.
+Copying-policy:	GPL
+End
