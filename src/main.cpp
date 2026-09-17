@@ -62,8 +62,8 @@ static int   gStepDelay     = 100;
 static genArray<saved>  gHighscores;
 static genArray<option> gOptions;
 
-#define STATUS_H  22
-#define MENU_H    22
+#define STATUS_H  30
+#define MENU_H    30
 
 // ---------------------------------------------------------------------------
 // Embedded 8x8 bitmap font (public domain, IBM CP437 glyphs 32-127)
@@ -188,6 +188,28 @@ static void blit_str(int x, int y, const char* s, Uint8 r, Uint8 g, Uint8 b)
         blit_char(x, y, *s, r, g, b);
 }
 
+static void blit_char_s(int cx, int cy, char ch, Uint8 r, Uint8 g, Uint8 b, int s)
+{
+    int idx = (unsigned char)ch - 32;
+    if (idx < 0 || idx >= 96) idx = 0;
+    SDL_SetRenderDrawColor(gRen, r, g, b, 255);
+    for (int row = 0; row < 8; row++) {
+        Uint8 bits = font8x8[idx][row];
+        for (int col = 0; col < 8; col++) {
+            if (bits & (0x80 >> col)) {
+                SDL_Rect px = {cx + col * s, cy + row * s, s, s};
+                SDL_RenderFillRect(gRen, &px);
+            }
+        }
+    }
+}
+
+static void blit_str_s(int x, int y, const char* str, Uint8 r, Uint8 g, Uint8 b, int s)
+{
+    for (; *str; str++, x += 8 * s)
+        blit_char_s(x, y, *str, r, g, b, s);
+}
+
 // ---------------------------------------------------------------------------
 // Menu system (drawn in SDL, no PM required)
 // ---------------------------------------------------------------------------
@@ -216,8 +238,9 @@ static MenuDef gMenus[3] = {
         {"About",      SDLK_F2,       false,  ""},
     }, 3},
 };
-#define MITEM_H  16
-#define MITEM_W  180
+#define MITEM_H   22
+#define MITEM_W  220
+#define MFSCALE    2
 
 // ---------------------------------------------------------------------------
 // Forward declarations
@@ -280,15 +303,18 @@ static void renderText(const char* text, SDL_Color color, int x, int y)
     SDL_Surface* s = TTF_RenderText_Solid(gFont, text, color);
     if (!s) return;
     SDL_Texture* t = SDL_CreateTextureFromSurface(gRen, s);
-    SDL_Rect dst = {x, y, s->w, s->h};
-    SDL_RenderCopy(gRen, t, NULL, &dst);
-    SDL_DestroyTexture(t);
+    if (t) {
+        SDL_Rect dst = {x, y, s->w, s->h};
+        SDL_RenderCopy(gRen, t, NULL, &dst);
+        SDL_DestroyTexture(t);
+    }
     SDL_FreeSurface(s);
 }
 
 static int textW(const char* text)
 {
-    if (!gFont || !text) return (int)strlen(text) * 8;
+    if (!text) return 0;
+    if (!gFont) return (int)strlen(text) * 8;
     int w = 0;
     TTF_SizeText(gFont, text, &w, NULL);
     return w;
@@ -426,20 +452,20 @@ static void drawStatus()
     SDL_SetRenderDrawColor(gRen, 255, 255, 255, 255);
     SDL_RenderDrawLine(gRen, 0, Y+1, W, Y+1);
 
-    // Text vertically centered in STATUS_H
-    int ty = Y + (STATUS_H - 8) / 2;
+    // Text vertically centered in STATUS_H at 2x scale
+    int ty = Y + (STATUS_H - 8 * MFSCALE) / 2;
 
     char buf[512];
     if (!gInPractice)
         snprintf(buf, sizeof(buf),
-                 "Level: %d  Total:  %ld  This level:  %ld  Lives:  %d  Esc: Quit, P: Pause",
+                 "Level: %d  Total: %ld  This level: %ld  Lives: %d  Esc: Quit  P: Pause",
                  gLevel, gScore, gBonus < 0 ? 0L : gBonus, gLives < 0 ? 0 : gLives);
     else
         snprintf(buf, sizeof(buf),
-                 "Level: %d  [Practice]  Lives:  %d  Esc: Quit, P: Pause",
+                 "Level: %d  [Practice]  Lives: %d  Esc: Quit  P: Pause",
                  gLevel, gLives < 0 ? 0 : gLives);
 
-    blit_str(6, ty, buf, 0, 0, 0);
+    blit_str_s(6, ty, buf, 0, 0, 0, MFSCALE);
 }
 
 static void drawMenuBar()
@@ -455,8 +481,8 @@ static void drawMenuBar()
 
     int x = 2;
     for (int m = 0; m < 3; m++) {
-        int tw = (int)strlen(gMenus[m].name) * 8;
-        int padx = 6;
+        int tw = (int)strlen(gMenus[m].name) * 8 * MFSCALE;
+        int padx = 8;
         gMenus[m].hx = x;
         gMenus[m].hw = tw + padx * 2;
 
@@ -464,9 +490,9 @@ static void drawMenuBar()
             SDL_SetRenderDrawColor(gRen, 0, 0, 128, 255);
             SDL_Rect hi = {x, 1, gMenus[m].hw, MENU_H - 2};
             SDL_RenderFillRect(gRen, &hi);
-            blit_str(x + padx, (MENU_H - 8) / 2, gMenus[m].name, 255, 255, 255);
+            blit_str_s(x + padx, (MENU_H - 8 * MFSCALE) / 2, gMenus[m].name, 255, 255, 255, MFSCALE);
         } else {
-            blit_str(x + padx, (MENU_H - 8) / 2, gMenus[m].name, 0, 0, 0);
+            blit_str_s(x + padx, (MENU_H - 8 * MFSCALE) / 2, gMenus[m].name, 0, 0, 0, MFSCALE);
         }
         x += gMenus[m].hw + 2;
     }
@@ -490,12 +516,12 @@ static void drawMenuBar()
                 SDL_RenderDrawLine(gRen, md.hx + 4, iy + MITEM_H/2,
                                          md.hx + MITEM_W - 4, iy + MITEM_H/2);
             } else {
-                blit_str(md.hx + 8, iy + (MITEM_H - 8)/2,
-                         md.items[i].label, 0, 0, 0);
+                blit_str_s(md.hx + 8, iy + (MITEM_H - 8 * MFSCALE) / 2,
+                           md.items[i].label, 0, 0, 0, MFSCALE);
                 if (md.items[i].shortcut && md.items[i].shortcut[0]) {
-                    int sw = (int)strlen(md.items[i].shortcut) * 8;
-                    blit_str(md.hx + MITEM_W - sw - 6, iy + (MITEM_H - 8)/2,
-                             md.items[i].shortcut, 80, 80, 80);
+                    int sw = (int)strlen(md.items[i].shortcut) * 8 * MFSCALE;
+                    blit_str_s(md.hx + MITEM_W - sw - 6, iy + (MITEM_H - 8 * MFSCALE) / 2,
+                               md.items[i].shortcut, 80, 80, 80, MFSCALE);
                 }
             }
         }
@@ -572,17 +598,17 @@ static bool zpHighScrQ()
 
     doWriterc();
 
-    // Display high score table
+    // Display high score table (NHigh up to 15, plus header = 16 entries)
     static char hdr[64];
     snprintf(hdr, sizeof(hdr), "--- High Scores ---");
-    static char hlines[12][64];
-    const char* msgs[14];
+    static char hlines[16][64];
+    const char* msgs[18];
     int cnt = 0;
     msgs[cnt++] = hdr;
 
     int hn = (int)gHighscores.tellSize();
     if (hn > n) hn = n;
-    for (int j = 0; j < hn && cnt < 12; j++) {
+    for (int j = 0; j < hn && cnt <= n; j++) {
         if (gHighscores[j].aScore > 0) {
             snprintf(hlines[cnt-1], 64, "%2d.  %-16s  L%d  %ld",
                      j+1, gHighscores[j].name,
@@ -1012,7 +1038,7 @@ int main(int argc, char* argv[])
         NULL
     };
     for (int i = 0; fontPaths[i] && !gFont; i++)
-        gFont = TTF_OpenFont(fontPaths[i], 13);
+        gFont = TTF_OpenFont(fontPaths[i], 16);
     if (!gFont)
         fprintf(stderr, "Warning: no font loaded; text overlays disabled.\n");
 

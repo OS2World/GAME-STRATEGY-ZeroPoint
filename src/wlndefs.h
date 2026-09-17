@@ -125,7 +125,9 @@ enum {rcnamesz = 25, numHi = 10};
 struct option{
 	char* name;
 	long value;
-	option(){ name = new char[rcnamesz]; }
+	option(){ name = new char[rcnamesz]; name[0] = '\0'; value = 0; }
+	option(const option& o){ name = new char[rcnamesz]; strncpy(name, o.name, rcnamesz-1); name[rcnamesz-1] = '\0'; value = o.value; }
+	option& operator=(const option& o){ strncpy(name, o.name, rcnamesz-1); name[rcnamesz-1] = '\0'; value = o.value; return *this; }
 	~option() { delete[] name;}
 };
 
@@ -135,16 +137,22 @@ struct saved{
 	long aScore;
 	int nLives;
 	saved() { name = new char[rcnamesz];
-		name[0] = 'R'; name[1] = 'o'; name[2] = 'n'; name[3] = '\0';
-		aLevel = 1;
-		aScore = 10;
+		name[0] = '-'; name[1] = '\0';
+		aLevel = 0; aScore = 0; nLives = 0;
 	}
-	saved(saved& sv) {
+	saved(const saved& sv) {
 		name = new char[rcnamesz];
-		strcpy(name, sv.name);
+		strncpy(name, sv.name, rcnamesz-1); name[rcnamesz-1] = '\0';
 		aLevel = sv.aLevel;
 		aScore = sv.aScore;
 		nLives = sv.nLives;
+	}
+	saved& operator=(const saved& sv) {
+		strncpy(name, sv.name, rcnamesz-1); name[rcnamesz-1] = '\0';
+		aLevel = sv.aLevel;
+		aScore = sv.aScore;
+		nLives = sv.nLives;
+		return *this;
 	}
 	~saved() { delete[] name; }
 };
