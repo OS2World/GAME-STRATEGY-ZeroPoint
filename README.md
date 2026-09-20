@@ -2,6 +2,8 @@
 
 A video game for ArcaOS / OS/2.
 
+![ZeroPoint Screenshot](doc/ZeroPoint.png)
+
 Original game by Enumerate Inc., Copyright © 1996–1998.  
 ArcaOS SDL2 port — version **0.9.5**.
 
